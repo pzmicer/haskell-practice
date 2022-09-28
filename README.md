@@ -1,1 +1,1 @@
-# haskell-practice
+# haskell-practices
