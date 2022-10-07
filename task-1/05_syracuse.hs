@@ -1,5 +1,3 @@
-import Distribution.Simple.Utils (xargs)
-collatz :: Int -> Int
 collatz 1 = 0
 collatz x
     | even x    = (+1) $ collatz $ div x 2

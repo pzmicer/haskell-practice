@@ -7,7 +7,6 @@ binPow x n
 
 
 -- with tail recursion (good)
-
 binPowHelper x n p
     | n == 0    = p
     | even n    = binPowHelper (x^2) (div n 2) p

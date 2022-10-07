@@ -1,5 +1,3 @@
--- Notation transfer
-
 -- fromDigits [1, 0, 1, 1, 0, 1] 2 == 45
 fromDigitsHelper [] n p res = res
 fromDigitsHelper (d:ds) n p res = fromDigitsHelper ds n (p * n) (res + d * p)
