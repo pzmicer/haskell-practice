@@ -8,7 +8,7 @@ delannoy a b =
 
 --
 
-delannoyStep cs ds = 1 : zipWith3 (\x y z -> x + y + z) ds (tail ds) cs ++ [1]
+delannoyStep cs ds = 1 : (zipWith3 (\x y z -> x + y + z) ds (tail ds) cs) ++ [1]
 
 delannoyHelper cs ds = cs : delannoyHelper ds (delannoyStep cs ds)
 

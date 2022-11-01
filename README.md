@@ -1,6 +1,6 @@
 # haskell-practices
 
-## Task 1
+## Task 1 (Beginner)
 1. Greatest Common Divisor
 2. Binary Power
 3. Fibonacci numbers through matrix multiplication
@@ -15,10 +15,17 @@
 12. Delannoy paths
 
 
-## Task 2
-Writing unit tests
-
-
-## Task 3
-1. fold and unfold functions practice
+## Task 2 (Advanced)
+1. `fold` and `unfold` functions practice
 2. Binary tree implementation
+3. Algebraic expressions
+4. Stack machine
+
+
+# Task 3 (Fixed Point)
+1. GCD
+2. Fibonacci series
+3. Fibonacci by Number
+4. Sum of list elements
+5. Min element in list
+6. Reverse list
