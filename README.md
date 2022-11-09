@@ -29,3 +29,9 @@
 4. Sum of list elements
 5. Min element in list
 6. Reverse list
+
+
+# Task 4 (Data Types, Classes and Functors)
+1. Date Class implementation
+2. Finit Natural Numbers Class implementation
+3. Create Functors from Data Types
