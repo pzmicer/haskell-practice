@@ -2,12 +2,11 @@ type Stack a = [a]
 type Command a = Stack a -> Stack a
 type Program a = [Command a]
 
+
 run :: Program a -> Stack a -> Stack a
 run [] = id
 run (c:cs) = run cs . c
 
-
--- 10 - 1 => push 10 push 1
 stackAdd (x:(y:ss)) = (y + x) : ss
 stackSub (x:(y:ss)) = (y - x) : ss
 stackMul (x:(y:ss)) = (y * x) : ss

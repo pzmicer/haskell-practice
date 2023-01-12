@@ -5,7 +5,6 @@ binPow x n
     | even n    = binPow (x ^ 2) (div n 2)
     | otherwise = binPow x (n - 1) * x
 
-
 -- with tail recursion (good)
 binPowHelper x n p
     | n == 0    = p

@@ -1,25 +1,41 @@
-data Tree a 
+data Tree a
     = Empty
     | Node a (Tree a) (Tree a)
     deriving(Show)
 
-count :: Tree a
-count = undefined
+insert :: Ord a => a -> Tree a -> Tree a
+insert x Empty = Node x Empty Empty
+insert x (Node v l r)
+    | x <= v    = Node v (insert x l) r
+    | otherwise = Node v l (insert x r)
 
+buildHelper :: Ord a => [a] -> Tree a -> Tree a
+buildHelper xs t = foldl (flip insert) t xs
 
--- BFS
---                 f                Acc  Queue       Result
-traverseWHelper :: (a -> b -> b) -> b -> [Tree a] -> b
-traverseWHelper _ b [] = b
-traverseWHelper f b (Empty:ts) = traverseWHelper f b ts
-traverseWHelper f b ((Node a l r):ts) = traverseWHelper f (f a b) (ts ++ [l, r])
+build :: Ord a => [a] -> Tree a
+build l = buildHelper l Empty
 
-treeTraverseW :: (a -> b -> b) -> b -> Tree a -> b
-treeTraverseW f b t = traverseWHelper f b [t]
-    
+--                        f                Acc  Queue       Result
+traversalBreadthHelper :: (a -> b -> b) -> b -> [Tree a] -> b
+traversalBreadthHelper _ b [] = b
+traversalBreadthHelper f b (Empty:ts) = traversalBreadthHelper f b ts
+traversalBreadthHelper f b ((Node a l r):ts) = traversalBreadthHelper f (f a b) (ts ++ [l, r])
 
--- DFS
---               f                Acc   Tree     Result
-treeTraverseD :: (a -> b -> b) -> b -> Tree a -> b
-treeTraverseD _ acc Empty = acc
-treeTraverseD f acc (Node v l r) = treeTraverseD f (f v (treeTraverseD f acc l)) r
+traversalBreadth :: (a -> b -> b) -> b -> Tree a -> b
+traversalBreadth f b t = traversalBreadthHelper f b [t]
+
+--                f                Acc  Tree      Result
+traversalDepth :: (a -> b -> b) -> b -> Tree a -> b
+traversalDepth _ acc Empty = acc
+traversalDepth f acc (Node v l r) = traversalDepth f (f v (traversalDepth f acc l)) r
+
+size :: Tree a -> Int
+size = traversalDepth (\ a b -> b+1) 0
+
+search :: Eq a => a -> Tree a -> Bool
+search s Empty = False
+search s (Node v l r)
+    | s == v = True
+    | search s l = True
+    | search s r = True
+    | otherwise = False

@@ -19,7 +19,6 @@ instance Functor OneOrTwo where
     fmap f (One a) = One (f a)
     fmap f (Two a b) = Two (f a) (f b)
 
--- ???
 instance Functor (Either e) where
   fmap f (Right x) = Right (f x)
   fmap f (Left x) = Left x

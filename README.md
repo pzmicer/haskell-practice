@@ -32,6 +32,10 @@
 
 
 # Task 4 (Data Types, Classes and Functors)
-1. Date Class implementation
-2. Finit Natural Numbers Class implementation
+1. Date class implementation
+2. Finit Natural Numbers class implementation
 3. Create Functors from Data Types
+
+
+# Task 5 (Monads)
+1. Characters Histogram

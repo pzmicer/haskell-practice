@@ -3,7 +3,6 @@ xLookup _ [] = Nothing
 xLookup x (p:ps) = if k == x then Just v else xLookup x ps
     where (k, v) = p
 
-
 data XList a
     = XNil  
     | XCons a (XList a)
