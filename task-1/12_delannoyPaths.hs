@@ -1,15 +1,20 @@
-delannoyStep :: [[Int]] -> [[Int]] ->[[Int]]
-delannoyStep cs ds = ([(0:), (2:)] <*> ds) ++ ([(1:)] <*> cs)
+delannoyStep :: [[Int]] -> [[Int]] -> [[Int]]
+delannoyStep cs ds = ([(0 :), (2 :)] <*> ds) ++ ([(1 :)] <*> cs)
 
-delannoyHelper :: [[Int]] -> [[Int]] ->[[[Int]]]
+delannoyHelper :: [[Int]] -> [[Int]] -> [[[Int]]]
 delannoyHelper cs ds = cs : delannoyHelper ds (delannoyStep cs ds)
 
 delannoyLayers :: [[[Int]]]
 delannoyLayers = delannoyHelper [[]] [[0], [2]]
 
--- It is not working yet
--- a x b grid, where a  vertical length, b - horizontal length
-delannoyPaths a b = filter (\l -> count 0 l <= b && count 2 l <= a) (delannoyLayers !! (a + b))
+-- A x B grid, where a - vertical length, b - horizontal length
+delannoyPaths :: Int -> Int -> [[Int]]
+delannoyPaths a b = filter (\l -> pathTo l == (a, b)) (delannoyLayers !! (a + b))
 
-count :: Int -> [Int] -> Int
-count x = length . filter (x==)
+pathTo :: [Int] -> (Int, Int)
+pathTo = foldl f (0, 0)
+  where
+    f (a, b) x
+      | x == 0 = (a, b + 1)
+      | x == 1 = (a + 1, b + 1)
+      | otherwise = (a + 1, b)
